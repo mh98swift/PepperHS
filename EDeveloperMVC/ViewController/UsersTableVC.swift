@@ -8,17 +8,21 @@
 import UIKit
 
 class UsersTableVC: UIViewController {
-    
-    var names = ["Michael", "David", "Paul", "Bob", "Steve"]
+
     var users: [User] = []
-    
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.title = "Users"
         
+        configureTableView()
+        
+        getUsersFromSingleTone()
+    }
+    
+    func getUsersFromSingleTone(){
         ApiManager.shard.getUsers { (result) in
             switch result{
             case .failure(let error):
@@ -31,27 +35,32 @@ class UsersTableVC: UIViewController {
             }
         }
     }
+    
+    func configureTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 }
 
 extension UsersTableVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return names.count
         return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? UserCell
+        
+        cell?.nameLabel.text = users[indexPath.row].name
+        cell?.emailLabel.text = users[indexPath.row].email
         
         if users[indexPath.row].name.contains("C"){
-            cell.backgroundColor = .green
-            cell.textLabel?.text = users[indexPath.row].name
+            cell?.backgroundColor = .green
         }
         else{
-            cell.textLabel?.text = users[indexPath.row].name
+            cell?.backgroundColor = .white
         }
         
-        
-        return cell
+        return cell ?? UITableViewCell()
     }
     
     
