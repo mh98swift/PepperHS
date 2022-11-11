@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  EDeveloperMVC
+//  PepperHS
 //
-//  Created by MiciH on 7/19/21.
+//  Created by VCM1 on 11/11/2022.
 //
 
 import UIKit

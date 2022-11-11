@@ -1,16 +1,16 @@
 //
-//  UserCell.swift
-//  EDeveloperMVC
+//  OperationCell.swift
+//  PepperHS
 //
-//  Created by MiciH on 7/19/21.
+//  Created by VCM1 on 11/11/2022.
 //
 
 import UIKit
 
-class UserCell: UITableViewCell {
+class OperationCell: UITableViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var operationType: UILabel!
+    @IBOutlet weak var operationDesc: UILabel!
     
 
     override func awakeFromNib() {
