@@ -20,8 +20,17 @@ class OperationsTableVCTests: XCTestCase {
     
     func test_viewDidLoad_setTitle() throws {
         let sut = try makeSUT()
+        
         sut.loadViewIfNeeded()
         XCTAssert((sut.title != nil), "Financial operations")
+    }
+    
+    func test_viewDidLoad_configureTableView() throws {
+        let sut = try makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut.tableView.delegate, "delegate")
+        XCTAssertNotNil(sut.tableView.dataSource, "dataSource")
     }
     
     //sytem under test
