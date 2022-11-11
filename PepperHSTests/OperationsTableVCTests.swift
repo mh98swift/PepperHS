@@ -33,6 +33,13 @@ class OperationsTableVCTests: XCTestCase {
         XCTAssertNotNil(sut.tableView.dataSource, "dataSource")
     }
     
+    func test_viewDidLoad_initialTVState() throws {
+        let sut = try makeSUT()
+
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
+    }
+    
     //sytem under test
     func makeSUT() throws -> FinancialOperationsTableVC{
         let bundle = Bundle(for: FinancialOperationsTableVC.self)
