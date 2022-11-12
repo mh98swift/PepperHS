@@ -8,8 +8,18 @@
 import UIKit
 
 class FinancialOperationsTableVC: UIViewController {
+    
+    //instead of calling the Api directly
+    //ApiManager.shard.loadOperationsFromLocalJson
+    //we make an init of the API just for this call by inject it
+    var api: ApiManager = .shard // Property injection
+    
+    //with out storyboard // init injection
+//    init(api: ApiManager){
+//        self.api = api
+//    }
 
-    var pepperOperations: [PepperOperation] = []
+    private var pepperOperations: [PepperOperation] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,8 +33,8 @@ class FinancialOperationsTableVC: UIViewController {
     }
     
     
-    func getOperations(){
-        ApiManager.shard.loadOperationsFromLocalJson { (result) in
+    private func getOperations(){
+        api.loadOperationsFromLocalJson { (result) in
             switch result{
             case .failure(let error):
                 print(error.localizedDescription)
@@ -37,7 +47,7 @@ class FinancialOperationsTableVC: UIViewController {
         }
     }
     
-    func configureTableView(){
+    private func configureTableView(){
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -51,20 +61,22 @@ extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? OperationCell
         
-        cell?.operationType.text = pepperOperations[indexPath.row].operationType
-        cell?.operationDesc.text = pepperOperations[indexPath.row].operationDesc
+        let vm = pepperOperationViewModel(operation: pepperOperations[indexPath.row])
+        
+        cell?.operationType.text = vm.operationType
+        cell?.operationDesc.text = vm.operationDesc
         cell?.accessoryType = .detailButton
         
-        if pepperOperations[indexPath.row].operationType.contains("CHARGE"){
+        if vm.operationType.contains("CHARGE"){
             cell?.backgroundColor = .green
         }
-        else if pepperOperations[indexPath.row].operationType.contains("REFUND"){
+        else if vm.operationType.contains("REFUND"){
             cell?.backgroundColor = .systemCyan
         }
-        else if pepperOperations[indexPath.row].operationType.contains("CASH"){
+        else if vm.operationType.contains("CASH"){
             cell?.backgroundColor = .systemPink
         }
-        else if pepperOperations[indexPath.row].operationType.contains("SAVING"){
+        else if vm.operationType.contains("SAVING"){
             cell?.backgroundColor = .systemMint
         }
         else{
@@ -73,7 +85,25 @@ extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource
         
         return cell ?? UITableViewCell()
     }
+}
+
+struct pepperOperationViewModel {
+    let operationType: String
+    let operationDesc: String?
+    let amount: Double
+    let source: String?
+    let address: String?
     
-    
+    init(operation: PepperOperation){
+        operationType = operation.operationType
+        // if operationType == "CASH_WITHDRAWAL"->(clickable) show CASH_WITHDRAWAL cell
+        // if operationType == "CHARGE" -> (i clickable)show CHARGE cell
+        // if operationType == "“SAVING_WITHDRAWAL” || “REFUND” || “SALARY” -> (i clickable) RECIVE Cell
+        
+        operationDesc = operation.operationType
+        amount = operation.amount
+        source = operation.source
+        address = operation.address
+    }
 }
 

@@ -12,8 +12,6 @@ class ApiManager {
     
     static let shard = ApiManager()
     
-    private init() {}
-    
     @Published var pepperOperations = [PepperOperation]()
     
     func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void ) {
