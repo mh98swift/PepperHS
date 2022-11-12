@@ -35,7 +35,9 @@ class FinancialOperationsTableVC: UIViewController {
 //        self.api = api
 //    }
 
-    private var pepperOperations: [PepperOperation] = []
+//    private var pepperOperations: [PepperOperation] = []
+    private var pepperOperations: [PepperOperationViewModel] = []
+
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -55,7 +57,7 @@ class FinancialOperationsTableVC: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             case.success(let pepperOperations):
-                    self.pepperOperations = pepperOperations
+                self.pepperOperations = pepperOperations.map(PepperOperationViewModel.init)
                     self.tableView.reloadData()
             }
         }
@@ -73,9 +75,9 @@ extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? OperationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? OperationCellCash_Withdrawal
         
-        let vm = pepperOperationViewModel(operation: pepperOperations[indexPath.row])
+        let vm = pepperOperations[indexPath.row]
         
         cell?.operationType.text = vm.operationType
         cell?.operationDesc.text = vm.operationDesc
@@ -99,9 +101,10 @@ extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource
         
         return cell ?? UITableViewCell()
     }
+    
 }
 
-struct pepperOperationViewModel {
+struct PepperOperationViewModel {
     let operationType: String
     let operationDesc: String?
     let amount: Double
@@ -110,6 +113,7 @@ struct pepperOperationViewModel {
     
     init(operation: PepperOperation){
         operationType = operation.operationType
+//       if operationType == "CASH_WITHDRAWAL"
         // if operationType == "CASH_WITHDRAWAL"->(clickable) show CASH_WITHDRAWAL cell
         // if operationType == "CHARGE" -> (i clickable)show CHARGE cell
         // if operationType == "“SAVING_WITHDRAWAL” || “REFUND” || “SALARY” -> (i clickable) RECIVE Cell

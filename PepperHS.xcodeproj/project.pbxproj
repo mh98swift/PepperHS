@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7165ABC226A60858005E4348 /* OperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165ABC126A60858005E4348 /* OperationCell.swift */; };
+		7165ABC226A60858005E4348 /* OperationCellCash_Withdrawal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165ABC126A60858005E4348 /* OperationCellCash_Withdrawal.swift */; };
 		71934F8D26A5EA8F005063D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71934F8C26A5EA8F005063D2 /* AppDelegate.swift */; };
 		71934F8F26A5EA8F005063D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71934F8E26A5EA8F005063D2 /* SceneDelegate.swift */; };
 		71934F9126A5EA8F005063D2 /* FinancialOperationsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71934F9026A5EA8F005063D2 /* FinancialOperationsTableVC.swift */; };
@@ -33,7 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7165ABC126A60858005E4348 /* OperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCell.swift; sourceTree = "<group>"; };
+		7165ABC126A60858005E4348 /* OperationCellCash_Withdrawal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCellCash_Withdrawal.swift; sourceTree = "<group>"; };
 		71934F8926A5EA8F005063D2 /* PepperHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PepperHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71934F8C26A5EA8F005063D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71934F8E26A5EA8F005063D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			children = (
 				71934FA826A5EE0A005063D2 /* Services */,
 				71934FA926A5EE2F005063D2 /* Model */,
-				7165ABC126A60858005E4348 /* OperationCell.swift */,
+				7165ABC126A60858005E4348 /* OperationCellCash_Withdrawal.swift */,
 				71934FAA26A5EE4E005063D2 /* ViewController */,
 				71934F8C26A5EA8F005063D2 /* AppDelegate.swift */,
 				71934F8E26A5EA8F005063D2 /* SceneDelegate.swift */,
@@ -243,7 +243,7 @@
 				71934FA326A5ED9D005063D2 /* ApiManager.swift in Sources */,
 				E85460FB291E360D00533A7D /* PepperOperation.swift in Sources */,
 				71934F9126A5EA8F005063D2 /* FinancialOperationsTableVC.swift in Sources */,
-				7165ABC226A60858005E4348 /* OperationCell.swift in Sources */,
+				7165ABC226A60858005E4348 /* OperationCellCash_Withdrawal.swift in Sources */,
 				E85460FD291E368F00533A7D /* PepperOperations.swift in Sources */,
 				71934F8D26A5EA8F005063D2 /* AppDelegate.swift in Sources */,
 				71934F8F26A5EA8F005063D2 /* SceneDelegate.swift in Sources */,

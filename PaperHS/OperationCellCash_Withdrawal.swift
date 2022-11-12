@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OperationCell: UITableViewCell {
+class OperationCellCash_Withdrawal: UITableViewCell {
     
     @IBOutlet weak var operationType: UILabel!
     @IBOutlet weak var operationDesc: UILabel!
@@ -16,6 +16,7 @@ class OperationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        contentView.backgroundColor = UIColor.cyan
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
