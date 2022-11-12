@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol Api {
-    func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void )
-}
+//protocol ApiProtocol {
+//    func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void )
+//}
 
-class ApiManager: Api {
+class ApiManager {
     
     static let shard = ApiManager()
     

@@ -40,6 +40,19 @@ class OperationsTableVCTests: XCTestCase {
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
     }
     
+    func test_viewDidLoad_renderOperationsFromJson() throws {
+        let sut = try makeSUT()
+        sut.loadOperationsFromLocalJson = { completion in
+            completion(.success([
+                PepperOperation(operationType: "operationType1", operationDesc: "operationDesc1", amount: 1.0, source: "source1", address: "address1", operationId: 1),
+                PepperOperation(operationType: "operationType2", operationDesc: "operationDesc2", amount: 2.0, source: "source2", address: "address1", operationId: 2)
+            ]))
+        }
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 2)
+    }
+    
+    
     func test_viewDidLoad_getJsonOperations() throws {
         let sut = try makeSUT()
 
@@ -57,7 +70,7 @@ class OperationsTableVCTests: XCTestCase {
         //if we disconect the TableView from UINavigationController from the
         let sut = try XCTUnwrap(navigation.topViewController as? FinancialOperationsTableVC)
         // init API just for testing
-        sut.api = ApiManagerStub()
+        sut.loadOperationsFromLocalJson = { _ in }
         return sut
     }
     
@@ -65,7 +78,8 @@ class OperationsTableVCTests: XCTestCase {
 
 // init API just for testing
                             //ApiManager
-private class ApiManagerStub: Api{
+                            //ApiProtocol
+private class ApiManagerStub{
 //    override init() {}
 //    override func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void) {
 //

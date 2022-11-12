@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias LoadOperationsFromLocalJson = (@escaping (Result<[PepperOperation], Error>) -> Void ) -> Void
+
 class FinancialOperationsTableVC: UIViewController {
     
     //instead of calling the Api directly
@@ -15,7 +17,18 @@ class FinancialOperationsTableVC: UIViewController {
     
 //    var api: ApiManager = .shard // Property injection
     
-    var api: Api = ApiManager.shard // Property injection from Protocol
+//    var api: ApiProtocol = ApiManager.shard // Property injection using Protocol
+    
+//    var loadOperationsFromLocalJson: LoadOperationsFromLocalJson =  ApiManager.shard.loadOperationsFromLocalJson // Property injection using Closure
+    
+    var loadOperationsFromLocalJson: LoadOperationsFromLocalJson = { completion in
+        ApiManager.shard.loadOperationsFromLocalJson {result in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }  // Property injection using Closure and thrting
+    
     
     //with out storyboard // init injection
 //    init(api: ApiManager){
@@ -37,15 +50,13 @@ class FinancialOperationsTableVC: UIViewController {
     
     
     private func getOperations(){
-        api.loadOperationsFromLocalJson { (result) in
+        loadOperationsFromLocalJson { (result) in
             switch result{
             case .failure(let error):
                 print(error.localizedDescription)
             case.success(let pepperOperations):
-                DispatchQueue.main.async {
                     self.pepperOperations = pepperOperations
                     self.tableView.reloadData()
-                }
             }
         }
     }
