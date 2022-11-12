@@ -64,9 +64,13 @@ class OperationsTableVCTests: XCTestCase {
 }
 
 // init API just for testing
-private class ApiManagerStub: ApiManager{
-    override init() {}
-    override func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void) {
+                            //ApiManager
+private class ApiManagerStub: Api{
+//    override init() {}
+//    override func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void) {
+//
+//    }
+    func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void) {
         
     }
 }

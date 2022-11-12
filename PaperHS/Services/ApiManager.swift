@@ -8,9 +8,15 @@
 
 import Foundation
 
-class ApiManager {
+protocol Api {
+    func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void )
+}
+
+class ApiManager: Api {
     
     static let shard = ApiManager()
+    
+    private init() {}
     
     @Published var pepperOperations = [PepperOperation]()
     

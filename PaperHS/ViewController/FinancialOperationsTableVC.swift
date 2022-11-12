@@ -12,7 +12,10 @@ class FinancialOperationsTableVC: UIViewController {
     //instead of calling the Api directly
     //ApiManager.shard.loadOperationsFromLocalJson
     //we make an init of the API just for this call by inject it
-    var api: ApiManager = .shard // Property injection
+    
+//    var api: ApiManager = .shard // Property injection
+    
+    var api: Api = ApiManager.shard // Property injection from Protocol
     
     //with out storyboard // init injection
 //    init(api: ApiManager){
