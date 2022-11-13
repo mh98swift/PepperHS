@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7165ABC226A60858005E4348 /* OperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165ABC126A60858005E4348 /* OperationCell.swift */; };
+		7165ABC226A60858005E4348 /* OperationCellCash_Withdrawal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165ABC126A60858005E4348 /* OperationCellCash_Withdrawal.swift */; };
 		71934F8D26A5EA8F005063D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71934F8C26A5EA8F005063D2 /* AppDelegate.swift */; };
 		71934F8F26A5EA8F005063D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71934F8E26A5EA8F005063D2 /* SceneDelegate.swift */; };
 		71934F9126A5EA8F005063D2 /* FinancialOperationsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71934F9026A5EA8F005063D2 /* FinancialOperationsTableVC.swift */; };
@@ -20,6 +20,14 @@
 		E85460FD291E368F00533A7D /* PepperOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85460FC291E368F00533A7D /* PepperOperations.swift */; };
 		E8546105291E5CC200533A7D /* PepperHSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8546104291E5CC200533A7D /* PepperHSTests.swift */; };
 		E854610C291E5DC800533A7D /* OperationsTableVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854610B291E5DC800533A7D /* OperationsTableVCTests.swift */; };
+		E8546113292028E300533A7D /* PepperOperationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8546112292028E300533A7D /* PepperOperationViewModel.swift */; };
+		E854611729202AF300533A7D /* ChargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854611529202AF300533A7D /* ChargeCell.swift */; };
+		E854611829202AF300533A7D /* ChargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E854611629202AF300533A7D /* ChargeCell.xib */; };
+		E854611B29205D2300533A7D /* CashWithDrawalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854611929205D2300533A7D /* CashWithDrawalCell.swift */; };
+		E854611C29205D2300533A7D /* CashWithDrawalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E854611A29205D2300533A7D /* CashWithDrawalCell.xib */; };
+		E854611F292061E300533A7D /* SavingRefundSalaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854611D292061E300533A7D /* SavingRefundSalaryCell.swift */; };
+		E8546120292061E300533A7D /* SavingRefundSalayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E854611E292061E300533A7D /* SavingRefundSalayCell.xib */; };
+		E854612229206C8700533A7D /* DetailIDVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E854612129206C8700533A7D /* DetailIDVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7165ABC126A60858005E4348 /* OperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCell.swift; sourceTree = "<group>"; };
+		7165ABC126A60858005E4348 /* OperationCellCash_Withdrawal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCellCash_Withdrawal.swift; sourceTree = "<group>"; };
 		71934F8926A5EA8F005063D2 /* PepperHS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PepperHS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71934F8C26A5EA8F005063D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71934F8E26A5EA8F005063D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 		E8546102291E5CC200533A7D /* PepperHSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PepperHSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8546104291E5CC200533A7D /* PepperHSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PepperHSTests.swift; sourceTree = "<group>"; };
 		E854610B291E5DC800533A7D /* OperationsTableVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTableVCTests.swift; sourceTree = "<group>"; };
+		E8546112292028E300533A7D /* PepperOperationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PepperOperationViewModel.swift; sourceTree = "<group>"; };
+		E854611529202AF300533A7D /* ChargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeCell.swift; sourceTree = "<group>"; };
+		E854611629202AF300533A7D /* ChargeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargeCell.xib; sourceTree = "<group>"; };
+		E854611929205D2300533A7D /* CashWithDrawalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashWithDrawalCell.swift; sourceTree = "<group>"; };
+		E854611A29205D2300533A7D /* CashWithDrawalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashWithDrawalCell.xib; sourceTree = "<group>"; };
+		E854611D292061E300533A7D /* SavingRefundSalaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingRefundSalaryCell.swift; sourceTree = "<group>"; };
+		E854611E292061E300533A7D /* SavingRefundSalayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavingRefundSalayCell.xib; sourceTree = "<group>"; };
+		E854612129206C8700533A7D /* DetailIDVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailIDVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +109,7 @@
 			children = (
 				71934FA826A5EE0A005063D2 /* Services */,
 				71934FA926A5EE2F005063D2 /* Model */,
-				7165ABC126A60858005E4348 /* OperationCell.swift */,
+				7165ABC126A60858005E4348 /* OperationCellCash_Withdrawal.swift */,
 				71934FAA26A5EE4E005063D2 /* ViewController */,
 				71934F8C26A5EA8F005063D2 /* AppDelegate.swift */,
 				71934F8E26A5EA8F005063D2 /* SceneDelegate.swift */,
@@ -118,6 +134,7 @@
 			children = (
 				E85460FA291E360D00533A7D /* PepperOperation.swift */,
 				E85460FC291E368F00533A7D /* PepperOperations.swift */,
+				E8546112292028E300533A7D /* PepperOperationViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,7 +142,9 @@
 		71934FAA26A5EE4E005063D2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E854611429202AB800533A7D /* cells */,
 				71934F9026A5EA8F005063D2 /* FinancialOperationsTableVC.swift */,
+				E854612129206C8700533A7D /* DetailIDVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -137,6 +156,19 @@
 				E854610B291E5DC800533A7D /* OperationsTableVCTests.swift */,
 			);
 			path = PepperHSTests;
+			sourceTree = "<group>";
+		};
+		E854611429202AB800533A7D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				E854611529202AF300533A7D /* ChargeCell.swift */,
+				E854611629202AF300533A7D /* ChargeCell.xib */,
+				E854611929205D2300533A7D /* CashWithDrawalCell.swift */,
+				E854611A29205D2300533A7D /* CashWithDrawalCell.xib */,
+				E854611D292061E300533A7D /* SavingRefundSalaryCell.swift */,
+				E854611E292061E300533A7D /* SavingRefundSalayCell.xib */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +253,9 @@
 			files = (
 				71934F9926A5EA92005063D2 /* LaunchScreen.storyboard in Resources */,
 				71934F9626A5EA92005063D2 /* Assets.xcassets in Resources */,
+				E8546120292061E300533A7D /* SavingRefundSalayCell.xib in Resources */,
+				E854611829202AF300533A7D /* ChargeCell.xib in Resources */,
+				E854611C29205D2300533A7D /* CashWithDrawalCell.xib in Resources */,
 				71934F9426A5EA8F005063D2 /* Main.storyboard in Resources */,
 				E834B552291D5E2A008A7942 /* mydata.json in Resources */,
 			);
@@ -242,8 +277,13 @@
 			files = (
 				71934FA326A5ED9D005063D2 /* ApiManager.swift in Sources */,
 				E85460FB291E360D00533A7D /* PepperOperation.swift in Sources */,
+				E854611729202AF300533A7D /* ChargeCell.swift in Sources */,
+				E854611F292061E300533A7D /* SavingRefundSalaryCell.swift in Sources */,
+				E8546113292028E300533A7D /* PepperOperationViewModel.swift in Sources */,
 				71934F9126A5EA8F005063D2 /* FinancialOperationsTableVC.swift in Sources */,
-				7165ABC226A60858005E4348 /* OperationCell.swift in Sources */,
+				E854611B29205D2300533A7D /* CashWithDrawalCell.swift in Sources */,
+				7165ABC226A60858005E4348 /* OperationCellCash_Withdrawal.swift in Sources */,
+				E854612229206C8700533A7D /* DetailIDVC.swift in Sources */,
 				E85460FD291E368F00533A7D /* PepperOperations.swift in Sources */,
 				71934F8D26A5EA8F005063D2 /* AppDelegate.swift in Sources */,
 				71934F8F26A5EA8F005063D2 /* SceneDelegate.swift in Sources */,

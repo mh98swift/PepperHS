@@ -8,13 +8,17 @@
 
 import Foundation
 
+//protocol ApiProtocol {
+//    func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void )
+//}
+
 class ApiManager {
     
     static let shard = ApiManager()
-    
     private init() {}
     
-    @Published var pepperOperations = [PepperOperation]()
+    var pepperOperations: PepperOperations?
+//    @Published var pepperOperations = [PepperOperation]()
     
     func loadOperationsFromLocalJson(completion: @escaping (Result<[PepperOperation], Error>) -> Void ) {
             
@@ -24,11 +28,11 @@ class ApiManager {
                 do {
                     let data = try Data(contentsOf: fileLocation)
                     let jsonDecoder = JSONDecoder()
-                    let dataFromJson = try jsonDecoder.decode([PepperOperation].self, from: data)
+                    let dataFromJson = try jsonDecoder.decode(PepperOperations.self, from: data)
                     
                     self.pepperOperations = dataFromJson
-                    print(pepperOperations)
-                    completion(.success(pepperOperations))
+                    print(pepperOperations?.operations)
+                    completion(.success(pepperOperations?.operations ?? []))
                 } catch {
                     print(error)
                     completion(.failure(error))

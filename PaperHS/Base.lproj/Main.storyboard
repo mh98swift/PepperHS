@@ -16,12 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3Z-Bx-DBD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3Z-Bx-DBD">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="pFc-XY-0AT">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="111" id="F7O-zL-6wz" customClass="OperationCell" customModule="PepperHS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="111"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="111" id="F7O-zL-6wz" customClass="OperationCellCash_Withdrawal" customModule="PepperHS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88.5" width="414" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F7O-zL-6wz" id="udx-hb-hrE">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
@@ -74,12 +79,45 @@
                     </view>
                     <navigationItem key="navigationItem" id="uVg-h2-ozh"/>
                     <connections>
+                        <outlet property="searchBar" destination="pFc-XY-0AT" id="OeJ-Oo-G1k"/>
                         <outlet property="tableView" destination="D3Z-Bx-DBD" id="V2A-O6-dIq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="98.4375"/>
+        </scene>
+        <!--DetailIDVC-->
+        <scene sceneID="3bP-5F-1aJ">
+            <objects>
+                <viewController storyboardIdentifier="DetailIDVC" id="Z7t-xp-Dj7" customClass="DetailIDVC" customModule="PepperHS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gjk-ER-Ipo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb9-0k-LkI">
+                                <rect key="frame" x="20" y="144" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XGi-NQ-icb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cb9-0k-LkI" firstAttribute="leading" secondItem="XGi-NQ-icb" secondAttribute="leading" constant="20" id="DgI-MG-1XL"/>
+                            <constraint firstItem="cb9-0k-LkI" firstAttribute="top" secondItem="XGi-NQ-icb" secondAttribute="top" constant="100" id="FRW-tS-ZcB"/>
+                            <constraint firstItem="XGi-NQ-icb" firstAttribute="trailing" secondItem="cb9-0k-LkI" secondAttribute="trailing" constant="20" id="PVz-oc-fCU"/>
+                            <constraint firstItem="cb9-0k-LkI" firstAttribute="centerX" secondItem="gjk-ER-Ipo" secondAttribute="centerX" id="zrV-gI-4jO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="operationIDLabel" destination="cb9-0k-LkI" id="mQe-oi-L0G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZm-zW-6q2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dUc-4C-MrV">
