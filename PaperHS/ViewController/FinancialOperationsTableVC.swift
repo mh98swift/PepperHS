@@ -11,6 +11,9 @@ typealias LoadOperationsFromLocalJson = (@escaping (Result<[PepperOperation], Er
 
 class FinancialOperationsTableVC: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    
     //instead of calling the Api directly
     //ApiManager.shard.loadOperationsFromLocalJson
     //we make an init of the API just for this call by inject it
@@ -37,9 +40,11 @@ class FinancialOperationsTableVC: UIViewController {
 
 //    private var pepperOperations: [PepperOperation] = []
     private var pepperOperations: [PepperOperationViewModel] = []
+    private var filteredPepperOperations: [PepperOperationViewModel] = []
+    
 
 
-    @IBOutlet weak var tableView: UITableView!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,7 @@ class FinancialOperationsTableVC: UIViewController {
         self.title = "Financial operations"
         
         configureTableView()
+        searchBar.delegate = self
         getOperations()
     }
     
@@ -58,6 +64,8 @@ class FinancialOperationsTableVC: UIViewController {
                 print(error.localizedDescription)
             case.success(let pepperOperations):
                 self.pepperOperations = pepperOperations.map(PepperOperationViewModel.init)
+//                self.pepperOperations = self.pepperOperations
+
                     self.tableView.reloadData()
             }
         }
@@ -66,6 +74,10 @@ class FinancialOperationsTableVC: UIViewController {
     private func configureTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(ChargeCell.nib(), forCellReuseIdentifier: "ChargeCell")
+        tableView.register(CashWithDrawalCell.nib(), forCellReuseIdentifier: "CashWithDrawalCell")
+        tableView.register(SavingRefundSalaryCell.nib(), forCellReuseIdentifier: "SavingRefundSalaryCell")
+        
     }
 }
 
@@ -75,53 +87,79 @@ extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? OperationCellCash_Withdrawal
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? OperationCellCash_Withdrawal
+        
+//        var cellType: UITableViewCell?
+        
+        
+        
         
         let vm = pepperOperations[indexPath.row]
         
-        cell?.operationType.text = vm.operationType
-        cell?.operationDesc.text = vm.operationDesc
-        cell?.accessoryType = .detailButton
+//        cell?.operationType.text = vm.operationType
+//        cell?.operationDesc.text = vm.operationDesc
         
-        if vm.operationType.contains("CHARGE"){
-            cell?.backgroundColor = .green
+        
+        
+        
+        if vm.operationType == "CHARGE" {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "ChargeCell", for: indexPath) as? ChargeCell {
+                cell.config(operation: vm)
+                return cell
+            }
+            //show x y z
         }
-        else if vm.operationType.contains("REFUND"){
-            cell?.backgroundColor = .systemCyan
+        else if vm.operationType == "CASH_WITHDRAWAL" {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "CashWithDrawalCell", for: indexPath) as? CashWithDrawalCell {
+                cell.config(operation: vm)
+            return cell
+            }
         }
-        else if vm.operationType.contains("CASH"){
-            cell?.backgroundColor = .systemPink
-        }
-        else if vm.operationType.contains("SAVING"){
-            cell?.backgroundColor = .systemMint
-        }
-        else{
-            cell?.backgroundColor = .white
+        else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "SavingRefundSalaryCell", for: indexPath) as? SavingRefundSalaryCell{
+                cell.config(operation: vm)
+                self.tableView.rowHeight = 100.0
+                return cell
+            }
+            
         }
         
-        return cell ?? UITableViewCell()
+        return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailIDVC") as? DetailIDVC{
+            
+            let vm = pepperOperations[indexPath.row]
+            
+            vc.operationID = String(vm.operationId)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
-struct PepperOperationViewModel {
-    let operationType: String
-    let operationDesc: String?
-    let amount: Double
-    let source: String?
-    let address: String?
-    
-    init(operation: PepperOperation){
-        operationType = operation.operationType
-//       if operationType == "CASH_WITHDRAWAL"
-        // if operationType == "CASH_WITHDRAWAL"->(clickable) show CASH_WITHDRAWAL cell
-        // if operationType == "CHARGE" -> (i clickable)show CHARGE cell
-        // if operationType == "“SAVING_WITHDRAWAL” || “REFUND” || “SALARY” -> (i clickable) RECIVE Cell
+extension FinancialOperationsTableVC: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        operationDesc = operation.operationType
-        amount = operation.amount
-        source = operation.source
-        address = operation.address
+        guard let filter = searchBar.text, !filter.isEmpty else {return}
+        
+//        filteredPepperOperations = pepperOperations.filter{$0.operationType.lowercased().contains(filter.lowercased())}
+        
+//        if searchText == "" {
+//            filteredPepperOperations = pepperOperations
+//        }
+//        else{
+//            for opr in pepperOperations {
+//                if opr.operationType.lowercased().contains(searchText.lowercased()){
+//                    filteredPepperOperations.append(opr)
+//                }
+//            }
+//        }
+        
+        tableView.reloadData()
     }
 }
+
+
 

@@ -1,4 +1,5 @@
-[
+{
+    "operations":[
     {
       "operationType": "CASH_WITHDRAWAL",
       "amount": 100.0,
@@ -67,4 +68,5 @@
       "operationId": 1
     }
   ]
+    }
 

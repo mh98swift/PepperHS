@@ -8,5 +8,5 @@
 import Foundation
 
 struct PepperOperations: Codable{
-    let pepperOperations: [PepperOperation]
+    let operations: [PepperOperation]
 }

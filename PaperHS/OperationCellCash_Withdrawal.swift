@@ -16,7 +16,7 @@ class OperationCellCash_Withdrawal: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        contentView.backgroundColor = UIColor.cyan
+//        contentView.backgroundColor = UIColor.cyan
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
