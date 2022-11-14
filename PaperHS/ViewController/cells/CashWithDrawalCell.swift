@@ -8,7 +8,9 @@
 import UIKit
 
 class CashWithDrawalCell: UITableViewCell {
-
+    
+    static let identifier = "CashWithDrawalCell"
+    
     @IBOutlet var amount: UILabel!
     @IBOutlet var source: UILabel!
     @IBOutlet var address: UILabel!
@@ -21,15 +23,14 @@ class CashWithDrawalCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     func config(operation: PepperOperationViewModel){
-        //pass text to UILabel
         amount.text = operation.getAmountToDollarString()
         source.text = operation.source
         address.text = operation.address

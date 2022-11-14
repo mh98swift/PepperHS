@@ -12,16 +12,18 @@ protocol SavingRefundSalaryDelegate {
 }
 
 class SavingRefundSalaryCell: UITableViewCell {
-
+    
     @IBOutlet var amount: UILabel!
     @IBOutlet var receivePayment: UILabel!
     @IBOutlet var iButton: UIButton!
     
+    static let identifier = "SavingRefundSalaryCell"
+    var delegate: SavingRefundSalaryDelegate?
+    var operation: PepperOperationViewModel?
+    
     static func nib() -> UINib {
         return UINib(nibName: "SavingRefundSalayCell", bundle: nil)
     }
-    var delegate: SavingRefundSalaryDelegate?
-    var operation: PepperOperationViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()

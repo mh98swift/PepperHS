@@ -7,15 +7,21 @@
 
 import UIKit
 
+enum OperationType: String{
+    case CHARGE = "CHARGE"
+    case CASH_WITHDRAWAL = "CASH_WITHDRAWAL"
+}
+
 typealias LoadOperationsFromLocalJson = (@escaping (Result<[PepperOperation], Error>) -> Void ) -> Void
 
 class FinancialOperationsTableVC: UIViewController{
     
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    var loadOperationsFromLocalJson: LoadOperationsFromLocalJson = { completion in
+    let screenTitle = "Financial operations"
+    
+    private var loadOperationsFromLocalJson: LoadOperationsFromLocalJson = { completion in
         ApiManager.shard.loadOperationsFromLocalJson {result in
             DispatchQueue.main.async {
                 completion(result)
@@ -30,13 +36,11 @@ class FinancialOperationsTableVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Financial operations"
-        
+        self.title = screenTitle
+        getOperations()
         configureTableView()
         searchBar.delegate = self
-        getOperations()
     }
-    
     
     private func getOperations(){
         loadOperationsFromLocalJson { (result) in
@@ -54,37 +58,36 @@ class FinancialOperationsTableVC: UIViewController{
     private func configureTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ChargeCell.nib(), forCellReuseIdentifier: "ChargeCell")
-        tableView.register(CashWithDrawalCell.nib(), forCellReuseIdentifier: "CashWithDrawalCell")
-        tableView.register(SavingRefundSalaryCell.nib(), forCellReuseIdentifier: "SavingRefundSalaryCell")
-        
+        tableView.register(ChargeCell.nib(), forCellReuseIdentifier: ChargeCell.identifier)
+        tableView.register(CashWithDrawalCell.nib(), forCellReuseIdentifier: CashWithDrawalCell.identifier)
+        tableView.register(SavingRefundSalaryCell.nib(), forCellReuseIdentifier: SavingRefundSalaryCell.identifier)
     }
 }
 
 extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredPepperOperations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let vm = filteredPepperOperations[indexPath.row]
         
-        if vm.operationType == "CHARGE" {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "ChargeCell", for: indexPath) as? ChargeCell {
+        if vm.operationType == OperationType.CHARGE.rawValue {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ChargeCell.identifier, for: indexPath) as? ChargeCell {
                 cell.config(operation: vm)
                 cell.delegate = self
                 return cell
             }
         }
-        else if vm.operationType == "CASH_WITHDRAWAL" {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CashWithDrawalCell", for: indexPath) as? CashWithDrawalCell {
+        else if vm.operationType == OperationType.CASH_WITHDRAWAL.rawValue {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CashWithDrawalCell.identifier, for: indexPath) as? CashWithDrawalCell {
                 cell.config(operation: vm)
                 return cell
             }
         }
         else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "SavingRefundSalaryCell", for: indexPath) as? SavingRefundSalaryCell{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SavingRefundSalaryCell.identifier, for: indexPath) as? SavingRefundSalaryCell{
                 cell.config(operation: vm)
                 cell.delegate = self
                 self.tableView.rowHeight = 100.0
@@ -97,9 +100,9 @@ extension FinancialOperationsTableVC: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if filteredPepperOperations[indexPath.row].operationType == "CASH_WITHDRAWAL"{
+        if filteredPepperOperations[indexPath.row].operationType == OperationType.CASH_WITHDRAWAL.rawValue{
             
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailIDVC") as? DetailIDVC{
+            if let vc = storyboard?.instantiateViewController(withIdentifier: DetailIDVC.identifier) as? DetailIDVC{
                 
                 let vm = filteredPepperOperations[indexPath.row]
                 
@@ -132,7 +135,7 @@ extension FinancialOperationsTableVC: UISearchBarDelegate{
 
 extension FinancialOperationsTableVC: SavingRefundSalaryDelegate {
     func buttonTapped(id: Int) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailIDVC") as? DetailIDVC{
+        if let vc = storyboard?.instantiateViewController(withIdentifier: DetailIDVC.identifier) as? DetailIDVC{
             
             vc.operationID = String(id)
             self.navigationController?.pushViewController(vc, animated: true)
@@ -142,7 +145,7 @@ extension FinancialOperationsTableVC: SavingRefundSalaryDelegate {
 
 extension FinancialOperationsTableVC: ChargeCellDelegateCell{
     func iChargeButtonTapped(id: Int) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailIDVC") as? DetailIDVC{
+        if let vc = storyboard?.instantiateViewController(withIdentifier: DetailIDVC.identifier) as? DetailIDVC{
             
             vc.operationID = String(id)
             self.navigationController?.pushViewController(vc, animated: true)

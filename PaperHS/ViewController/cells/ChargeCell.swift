@@ -16,12 +16,14 @@ class ChargeCell: UITableViewCell {
     @IBOutlet var amount: UILabel!
     @IBOutlet var operationDesc: UILabel!
     
+    var delegate: ChargeCellDelegateCell?
+    var operation: PepperOperationViewModel?
+    static let identifier = "ChargeCell"
+    
     static func nib() -> UINib {
         return UINib(nibName: "ChargeCell", bundle: nil)
     }
     
-    var delegate: ChargeCellDelegateCell?
-    var operation: PepperOperationViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
