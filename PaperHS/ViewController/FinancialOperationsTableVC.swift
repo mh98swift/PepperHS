@@ -21,7 +21,7 @@ class FinancialOperationsTableVC: UIViewController{
     
     let screenTitle = "Financial operations"
     
-    private var loadOperationsFromLocalJson: LoadOperationsFromLocalJson = { completion in
+    var loadOperationsFromLocalJson: LoadOperationsFromLocalJson = { completion in
         ApiManager.shard.loadOperationsFromLocalJson {result in
             DispatchQueue.main.async {
                 completion(result)
