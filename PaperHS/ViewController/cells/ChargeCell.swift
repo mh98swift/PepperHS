@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChargeCellDelegateCell {
+    func iChargeButtonTapped(id: Int)
+}
+
 class ChargeCell: UITableViewCell {
     
     @IBOutlet var amount: UILabel!
@@ -16,21 +20,24 @@ class ChargeCell: UITableViewCell {
         return UINib(nibName: "ChargeCell", bundle: nil)
     }
     
+    var delegate: ChargeCellDelegateCell?
+    var operation: PepperOperationViewModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func config(operation: PepperOperationViewModel){
-        //pass text to UILabel
+        self.operation = operation
         amount.text = operation.getAmountToDollarString()
         operationDesc.text = operation.operationDesc
+    }
+    
+    @IBAction func iChargeTapped(_ sender: UIButton) {
+        guard let operationId = operation?.operationId else { return }
+        delegate?.iChargeButtonTapped(id: operationId)
     }
     
 }

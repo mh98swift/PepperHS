@@ -23,18 +23,28 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="operationDesc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT0-u8-z5c">
-                        <rect key="frame" x="203.5" y="48" width="111.5" height="20.5"/>
+                        <rect key="frame" x="143.5" y="48" width="111.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MR-0X-Q9x">
+                        <rect key="frame" x="276" y="42.5" width="28" height="31"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="i"/>
+                        <connections>
+                            <action selector="iChargeTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wYJ-48-q0q"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="zT0-u8-z5c" secondAttribute="trailing" constant="5" id="I39-We-LwN"/>
+                    <constraint firstAttribute="trailing" secondItem="6MR-0X-Q9x" secondAttribute="trailing" constant="16" id="3hd-e5-hgh"/>
                     <constraint firstItem="J3T-gi-IJR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RUl-Lv-hbC"/>
+                    <constraint firstItem="6MR-0X-Q9x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WzX-dP-TTa"/>
                     <constraint firstItem="zT0-u8-z5c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XeK-tX-d6K"/>
                     <constraint firstItem="J3T-gi-IJR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dyH-1n-Zb5"/>
+                    <constraint firstItem="6MR-0X-Q9x" firstAttribute="leading" secondItem="zT0-u8-z5c" secondAttribute="trailing" constant="21" id="uMs-Pa-R95"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

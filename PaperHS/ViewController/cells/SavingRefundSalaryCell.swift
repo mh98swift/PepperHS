@@ -16,6 +16,7 @@ class SavingRefundSalaryCell: UITableViewCell {
     @IBOutlet var amount: UILabel!
     @IBOutlet var receivePayment: UILabel!
     @IBOutlet var iButton: UIButton!
+    
     static func nib() -> UINib {
         return UINib(nibName: "SavingRefundSalayCell", bundle: nil)
     }
@@ -28,7 +29,6 @@ class SavingRefundSalaryCell: UITableViewCell {
     }
     
     func config(operation: PepperOperationViewModel){
-        //pass text to UILabel
         self.operation = operation
         amount.text = operation.getAmountToDollarString(decimalPoint: 1)
         receivePayment.text = "Received Payment"
