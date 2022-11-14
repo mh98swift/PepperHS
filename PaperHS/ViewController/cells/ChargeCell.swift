@@ -27,7 +27,7 @@ class ChargeCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
-
+    
     
     func config(operation: PepperOperationViewModel){
         self.operation = operation

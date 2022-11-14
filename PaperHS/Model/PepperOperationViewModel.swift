@@ -30,33 +30,21 @@ struct PepperOperationViewModel {
     }
     
     func cellDataToSearch(searchText: String) -> Bool{
-        /*
-    operationType: String
-    operationDesc: String?
-    amount: Double
-    source: String?
-    address: String?
-    operationId: Int
-         
-        */
-        
         
         let searchTextLower = searchText.lowercased()
         let desc = operationDesc?.lowercased() ?? ""
         let source = source?.lowercased() ?? ""
         let address = address?.lowercased() ?? ""
         let amount = String(amount.rounded(.up))
-        if operationType.lowercased().contains(searchTextLower) ||
-            desc.contains(searchTextLower) ||
-            source.contains(searchTextLower) ||
-            address.contains(searchTextLower) ||
-            amount.contains(searchTextLower)
-        {
-            return true
-        }
         
-       
-        return false
+            if operationType.lowercased().contains(searchTextLower) ||
+                desc.contains(searchTextLower) ||
+                source.contains(searchTextLower) ||
+                address.contains(searchTextLower) ||
+                amount.contains(searchTextLower)
+            {return true}
+        
+            return false
     }
 }
 
