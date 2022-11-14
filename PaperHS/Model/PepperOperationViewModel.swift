@@ -17,15 +17,47 @@ struct PepperOperationViewModel {
     
     init(operation: PepperOperation){
         operationType = operation.operationType
-//       if operationType == "CASH_WITHDRAWAL"
-        // if operationType == "CASH_WITHDRAWAL"->(clickable) show CASH_WITHDRAWAL cell
-        // if operationType == "CHARGE" -> (i clickable)show CHARGE cell
-        // if operationType == "“SAVING_WITHDRAWAL” || “REFUND” || “SALARY” -> (i clickable) RECIVE Cell
-        
-        operationDesc = operation.operationType
+        operationDesc = operation.operationDesc
         amount = operation.amount
+        
         source = operation.source
         address = operation.address
         operationId = operation.operationId
     }
+    
+    func getAmountToDollarString(decimalPoint: Int = 0)-> String{
+        return String(format: "$"+"%.\(decimalPoint)f", amount)
+    }
+    
+    func cellDataToSearch(searchText: String) -> Bool{
+        /*
+    operationType: String
+    operationDesc: String?
+    amount: Double
+    source: String?
+    address: String?
+    operationId: Int
+         
+        */
+        
+        
+        let searchTextLower = searchText.lowercased()
+        let desc = operationDesc?.lowercased() ?? ""
+        let source = source?.lowercased() ?? ""
+        let address = address?.lowercased() ?? ""
+        let amount = String(amount.rounded(.up))
+        if operationType.lowercased().contains(searchTextLower) ||
+            desc.contains(searchTextLower) ||
+            source.contains(searchTextLower) ||
+            address.contains(searchTextLower) ||
+            amount.contains(searchTextLower)
+        {
+            return true
+        }
+        
+       
+        return false
+    }
 }
+
+

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SavingRefundSalaryDelegate {
+    func buttonTapped(id: Int)
+}
+
 class SavingRefundSalaryCell: UITableViewCell {
 
     @IBOutlet var amount: UILabel!
@@ -15,22 +19,23 @@ class SavingRefundSalaryCell: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "SavingRefundSalayCell", bundle: nil)
     }
+    var delegate: SavingRefundSalaryDelegate?
+    var operation: PepperOperationViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        selectionStyle = .none
     }
     
     func config(operation: PepperOperationViewModel){
         //pass text to UILabel
-        amount.text = String(format: "$"+"%.1f", operation.amount)
+        self.operation = operation
+        amount.text = operation.getAmountToDollarString(decimalPoint: 1)
         receivePayment.text = "Received Payment"
     }
     
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        guard let operationId = operation?.operationId else { return }
+        delegate?.buttonTapped(id: operationId)
+    }
 }

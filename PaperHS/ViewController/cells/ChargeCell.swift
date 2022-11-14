@@ -29,7 +29,7 @@ class ChargeCell: UITableViewCell {
     
     func config(operation: PepperOperationViewModel){
         //pass text to UILabel
-        amount.text = String(format: "$"+"%.0f", operation.amount)
+        amount.text = operation.getAmountToDollarString()
         operationDesc.text = operation.operationDesc
     }
     

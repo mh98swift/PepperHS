@@ -37,6 +37,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="i"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g5o-c3-XCV"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>

@@ -30,7 +30,7 @@ class CashWithDrawalCell: UITableViewCell {
     
     func config(operation: PepperOperationViewModel){
         //pass text to UILabel
-        amount.text = String(format: "$"+"%.0f", operation.amount)
+        amount.text = operation.getAmountToDollarString()
         source.text = operation.source
         address.text = operation.address
     }
